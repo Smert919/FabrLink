@@ -109,7 +109,7 @@ function RegisterUIAFlow({
         auth: authDict,
         password,
         username,
-        initial_device_display_name: 'Cinny Web',
+        initial_device_display_name: 'FabrLink Web',
       });
     },
     [onRegister, formData]
@@ -250,7 +250,7 @@ export function PasswordRegisterForm({
       auth: {
         session: authData.session,
       },
-      initial_device_display_name: 'Cinny Web',
+      initial_device_display_name: 'FabrLink Web',
     });
   };
 
@@ -259,7 +259,7 @@ export function PasswordRegisterForm({
       <Box as="form" onSubmit={handleSubmit} direction="Inherit" gap="400">
         <Box direction="Column" gap="100">
           <Text as="label" size="L400" priority="300">
-            Username
+            Логин
           </Text>
           <Input
             variant="Background"
@@ -284,7 +284,7 @@ export function PasswordRegisterForm({
             <>
               <Box direction="Column" gap="100">
                 <Text as="label" size="L400" priority="300">
-                  Password
+                  Пароль
                 </Text>
                 <PasswordInput
                   ref={passRef}
@@ -314,7 +314,7 @@ export function PasswordRegisterForm({
               </Box>
               <Box direction="Column" gap="100">
                 <Text as="label" size="L400" priority="300">
-                  Confirm Password
+                  Повторите пароль
                 </Text>
                 <PasswordInput
                   ref={confPassRef}
@@ -377,21 +377,21 @@ export function PasswordRegisterForm({
           </Box>
         )}
         {registerError?.errcode === RegisterError.RateLimited && (
-          <FieldError message="Failed to register. Your register request has been rate-limited by server, Please try after some time." />
+          <FieldError message="Слишком много попыток регистрации. Подождите немного." />
         )}
         {registerError?.errcode === RegisterError.Forbidden && (
-          <FieldError message="Failed to register. The homeserver does not permit registration." />
+          <FieldError message="Регистрация на этом сервере запрещена." />
         )}
         {registerError?.errcode === RegisterError.InvalidRequest && (
-          <FieldError message="Failed to register. Invalid request." />
+          <FieldError message="Не удалось зарегистрироваться: сервер отклонил запрос." />
         )}
         {registerError?.errcode === RegisterError.Unknown && (
-          <FieldError message={registerError.data.error ?? 'Failed to register. Unknown Reason.'} />
+          <FieldError message={registerError.data.error ?? 'Не удалось зарегистрироваться.'} />
         )}
         <span data-spacing-node />
         <Button variant="Primary" size="500" type="submit">
           <Text as="span" size="B500">
-            Register
+            Создать аккаунт
           </Text>
         </Button>
       </Box>

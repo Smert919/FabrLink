@@ -1,9 +1,9 @@
 {
-  "name": "Cinny",
-  "short_name": "Cinny",
-  "description": "Yet another matrix client",
+  "name": "FabrLink",
+  "short_name": "FabrLink",
+  "description": "FabrLink — личный мессенджер",
   "dir": "auto",
-  "lang": "en-US",
+  "lang": "ru-RU",
   "display": "standalone",
   "orientation": "portrait",
   "start_url": "./",
