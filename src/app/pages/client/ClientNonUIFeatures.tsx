@@ -3,9 +3,9 @@ import React, { ReactNode, useCallback, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { RoomEvent, RoomEventHandlerMap } from 'matrix-js-sdk';
 import { roomToUnreadAtom, unreadEqual, unreadInfoToUnread } from '../../state/room/roomToUnread';
-import LogoSVG from '../../../../public/res/svg/cinny.svg';
-import LogoUnreadSVG from '../../../../public/res/svg/cinny-unread.svg';
-import LogoHighlightSVG from '../../../../public/res/svg/cinny-highlight.svg';
+import LogoSVG from '../../../../public/res/svg/fabrlink.svg';
+import LogoUnreadSVG from '../../../../public/res/svg/fabrlink.svg';
+import LogoHighlightSVG from '../../../../public/res/svg/fabrlink.svg';
 import NotificationSound from '../../../../public/sound/notification.ogg';
 import InviteSound from '../../../../public/sound/invite.ogg';
 import { notificationPermission, setFavicon } from '../../utils/dom';
@@ -88,10 +88,10 @@ function InviteNotifications() {
 
   const notify = useCallback(
     (count: number) => {
-      const noti = new window.Notification('Invitation', {
+      const noti = new window.Notification('Приглашения', {
         icon: LogoSVG,
         badge: LogoSVG,
-        body: `You have ${count} new invitation request.`,
+        body: `У вас ${count} новых приглашений.`,
         silent: true,
       });
 
@@ -156,7 +156,7 @@ function MessageNotifications() {
       const noti = new window.Notification(roomName, {
         icon: roomAvatar,
         badge: roomAvatar,
-        body: `New inbox notification from ${username}`,
+        body: `Новое сообщение от ${username}`,
         silent: true,
       });
 

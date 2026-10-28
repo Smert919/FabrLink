@@ -303,6 +303,39 @@ function PageZoomInput() {
   );
 }
 
+function LanguageSelector() {
+  const [lang, setLang] = React.useState(localStorage.getItem('i18nextLng') || 'ru');
+
+  const handleChange = (newLang: string) => {
+    setLang(newLang);
+    localStorage.setItem('i18nextLng', newLang);
+    window.location.reload();
+  };
+
+  return (
+    <Box gap="200">
+      <Button
+        variant={lang === 'ru' ? 'Primary' : 'Secondary'}
+        fill="Soft"
+        size="300"
+        radii="300"
+        onClick={() => handleChange('ru')}
+      >
+        <Text size="B300">Русский</Text>
+      </Button>
+      <Button
+        variant={lang === 'en' ? 'Primary' : 'Secondary'}
+        fill="Soft"
+        size="300"
+        radii="300"
+        onClick={() => handleChange('en')}
+      >
+        <Text size="B300">English</Text>
+      </Button>
+    </Box>
+  );
+}
+
 function Appearance() {
   const [systemTheme, setSystemTheme] = useSetting(settingsAtom, 'useSystemTheme');
   const [monochromeMode, setMonochromeMode] = useSetting(settingsAtom, 'monochromeMode');
@@ -310,7 +343,16 @@ function Appearance() {
 
   return (
     <Box direction="Column" gap="100">
-      <Text size="L400">Appearance</Text>
+      <Text size="L400">Внешний вид</Text>
+
+      <SequenceCard className={SequenceCardStyle} variant="SurfaceVariant" direction="Column">
+        <SettingTile
+          title="Язык интерфейса"
+          description="Выберите язык приложения"
+          after={<LanguageSelector />}
+        />
+      </SequenceCard>
+
       <SequenceCard
         className={SequenceCardStyle}
         variant="SurfaceVariant"
@@ -318,8 +360,8 @@ function Appearance() {
         gap="400"
       >
         <SettingTile
-          title="System Theme"
-          description="Choose between light and dark theme based on system preference."
+          title="Системная тема"
+          description="Автоматически переключаться между светлой и тёмной темой."
           after={<Switch variant="Primary" value={systemTheme} onChange={setSystemTheme} />}
         />
         {systemTheme && <SystemThemePreferences />}
@@ -327,15 +369,15 @@ function Appearance() {
 
       <SequenceCard className={SequenceCardStyle} variant="SurfaceVariant" direction="Column">
         <SettingTile
-          title="Theme"
-          description="Theme to use when system theme is not enabled."
+          title="Тема"
+          description="Тема, которая будет использоваться, если системная тема отключена."
           after={<SelectTheme disabled={systemTheme} />}
         />
       </SequenceCard>
 
       <SequenceCard className={SequenceCardStyle} variant="SurfaceVariant" direction="Column">
         <SettingTile
-          title="Monochrome Mode"
+          title="Монохромный режим"
           after={<Switch variant="Primary" value={monochromeMode} onChange={setMonochromeMode} />}
         />
       </SequenceCard>
@@ -348,7 +390,7 @@ function Appearance() {
       </SequenceCard>
 
       <SequenceCard className={SequenceCardStyle} variant="SurfaceVariant" direction="Column">
-        <SettingTile title="Page Zoom" after={<PageZoomInput />} />
+        <SettingTile title="Масштаб страницы" after={<PageZoomInput />} />
       </SequenceCard>
     </Box>
   );
