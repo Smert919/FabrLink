@@ -49,10 +49,9 @@ import { setAfterLoginRedirectPath } from './afterLoginRedirectPath';
 import { Room } from '../features/room';
 import { Lobby } from '../features/lobby';
 import { WelcomePage } from './client/WelcomePage';
-import { SidebarNav } from './client/SidebarNav';
+import { MobileFriendlyPageNav } from './MobileFriendly';
 import { PageRoot } from '../components/page';
 import { ScreenSize } from '../hooks/useScreenSize';
-import { MobileFriendlyPageNav, MobileFriendlyClientNav } from './MobileFriendly';
 import { ClientInitStorageAtom } from './client/ClientInitStorageAtom';
 import { ClientNonUIFeatures } from './client/ClientNonUIFeatures';
 import { AuthRouteThemeManager, UnAuthRouteThemeManager } from './ThemeManager';
@@ -128,12 +127,8 @@ export const createRouter = (clientConfig: ClientConfig, screenSize: ScreenSize)
                     <ClientNonUIFeatures>
                       <CallEmbedProvider>
                         <ClientLayout
-                          nav={
-                            <MobileFriendlyClientNav>
-                              <SidebarNav />
-                            </MobileFriendlyClientNav>
-                          }
-                        >
+                          nav={null}
+                         >
                           <Outlet />
                         </ClientLayout>
                         <CallStatusRenderer />

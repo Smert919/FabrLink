@@ -35,6 +35,10 @@ const copyFiles = {
       dest: '',
     },
     {
+      src: 'public/_redirects',
+      dest: '',
+    },
+    {
       src: 'public/res/android',
       dest: 'public/',
     },
