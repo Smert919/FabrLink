@@ -3,13 +3,30 @@ import { recipe, RecipeVariants } from '@vanilla-extract/recipes';
 import { DefaultReset, color, config, toRem } from 'folds';
 
 export const PageNav = recipe({
+  base: {
+    '@media': {
+      '(max-width: 750px)': {
+        width: '100%',
+      },
+    },
+  },
   variants: {
     size: {
       '400': {
         width: toRem(380),
+        '@media': {
+          '(max-width: 750px)': {
+            width: '100%',
+          },
+        },
       },
       '300': {
         width: toRem(222),
+        '@media': {
+          '(max-width: 750px)': {
+            width: '100%',
+          },
+        },
       },
     },
   },
